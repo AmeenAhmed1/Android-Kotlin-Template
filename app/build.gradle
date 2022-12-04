@@ -1,16 +1,20 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id "androidx.navigation.safeargs.kotlin"
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
 }
 
 android {
     namespace 'com.github.ameen.androidkotlintemplate'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.github.ameen.androidkotlintemplate"
         minSdk 27
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -30,15 +34,69 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    //Testing
     testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    testImplementation "org.mockito.kotlin:mockito-kotlin:$mockitoVersion"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutineVersion"
+    androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
+
+    //scalable size unit(support for different screen sizes)
+    implementation "com.intuit.sdp:sdp-android:$scalableSizeVersion"
+    implementation "com.intuit.ssp:ssp-android:$scalableSizeVersion"
+
+    //Timber
+    implementation "com.jakewharton.timber:timber:$timberVersion"
+
+    //Gson
+    implementation "com.google.code.gson:gson:$gsonVersion"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
+
+    // Navigation Component
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+
+    //Hilt
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
+    kapt "com.google.dagger:hilt-compiler:$hiltVersion"
+
+    //Glide
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+
+    //LifeCycle
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifeCycleVersion"
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifeCycleVersion"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifeCycleVersion"
+
+
+    //Room DB
+    implementation "androidx.room:room-ktx:$roomVersion"
+    implementation "androidx.room:room-runtime:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
 }
