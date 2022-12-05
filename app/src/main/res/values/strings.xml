@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">Android Kotlin Template</string>
+    <string name="app_name" translatable="false">Android Kotlin Template</string>
+
+    <string name="error">Some error happened please try again.</string>
+    <string name="server_error">Server Error</string>
+    <string name="no_internet">No internet connection</string>
 </resources>
